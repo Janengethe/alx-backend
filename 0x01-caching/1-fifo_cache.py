@@ -16,14 +16,14 @@ class FIFOCache(BaseCaching):
 
     def put(self, key, item):
         """Adds an item to the dict and pops using FIFO"""
-        if key and item:
-            self.__keys.append(key)
-            self.cache_data[key] = item
-
         if len(self.cache_data) == self.MAX_ITEMS and key not in self.__keys:
             to_del = self.__keys.pop(0)
             del self.cache_data[to_del]
             print("DISCARD: {}".format(to_del))
+
+        if key and item:
+            self.__keys.append(key)
+            self.cache_data[key] = item
 
     def get(self, key):
         """Retrieves an item by key"""
