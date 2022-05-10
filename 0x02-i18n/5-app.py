@@ -7,7 +7,7 @@ from flask import Flask, g, render_template, request
 from flask_babel import Babel
 
 
-users = {
+users: dict = {
     1: {"name": "Balou", "locale": "fr", "timezone": "Europe/Paris"},
     2: {"name": "Beyonce", "locale": "en", "timezone": "US/Central"},
     3: {"name": "Spock", "locale": "kg", "timezone": "Vulcan"},
@@ -35,7 +35,7 @@ app.config.from_object(Config)
 
 
 @babel.localeselector
-def get_locale():
+def get_locale() -> str:
     """
     Use request.accept_languages to determine the
     best match with our supported languages
@@ -62,7 +62,7 @@ def index() -> str:
     return render_template("6-index.html")
 
 
-def get_user():
+def get_user() -> dict:
     """
     Returns a user dictionary or None if the ID cannot
     be found or if login_as was not passed.
@@ -74,7 +74,7 @@ def get_user():
 
 
 @app.before_request
-def before_request():
+def before_request() -> None:
     """
     Uses the app.before_request decorator to make it be executed
     before all other functions.
