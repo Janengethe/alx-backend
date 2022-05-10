@@ -43,23 +43,13 @@ def get_locale() -> str:
     local_e = request.args.get("locale", None)
     if local_e and local_e in app.config["LANGUAGES"]:
         return local_e
-
-    if g.user:
-        local_e = g.user.get("locale")
-        if local_e in app.config["LANGUAGES"]:
-            return local_e
-
-    local_e = request.headers.get("locale", None)
-    if local_e and local_e in app.config["LANGUAGES"]:
-        return local_e
-
     return request.accept_languages.best_match(app.config["LANGUAGES"])
 
 
 @app.route("/")
 def index() -> str:
     """Index route"""
-    return render_template("6-index.html")
+    return render_template("5-index.html")
 
 
 def get_user() -> dict:
