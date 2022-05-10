@@ -3,7 +3,7 @@
 Module 0-app
 Basic flask app
 """
-from flask import Flask, render_template, request
+from flask import Flask, render_template
 from flask_babel import Babel
 
 
@@ -12,10 +12,14 @@ babel = Babel(app)
 
 
 class Config(object):
-    """Language configuration class"""
+    """Language and timezone configuration class"""
     LANGUAGES = ["en", "fr"]
     BABEL_DEFAULT_LOCALE = "en"
     BABEL_DEFAULT_TIMEZONE = "UTC"
+
+
+# Use that class as config for your Flask app
+app.config.from_object(Config)
 
 
 @app.route("/")
