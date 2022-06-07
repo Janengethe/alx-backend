@@ -1,4 +1,5 @@
 import redis from 'redis';
+
 const { promisify } = require('util');
 
 // Create a new client
@@ -17,13 +18,13 @@ client.on('error', (err) => {
 
 // setNewSchool sets in Redis the value for the key schoolName
 // It displays a confirmation message using redis.print
-function setNewSchool(schoolName, value){
-    client.set(schoolName, value, redis.print);
+function setNewSchool(schoolName, value) {
+  client.set(schoolName, value, redis.print);
 }
 
 // displaySchoolValue
-function displaySchoolValue(schoolName){
-    console.log(await.asyncGet(schoolName));
+async function displaySchoolValue(schoolName) {
+  console.log(await asyncGet(schoolName));
 }
 
 displaySchoolValue('Holberton');
