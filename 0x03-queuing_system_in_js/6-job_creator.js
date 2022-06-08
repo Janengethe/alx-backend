@@ -1,6 +1,6 @@
-const kue = require('kue');
+import { createQueue } from 'kue';
 
-const queue = kue.createQueue();
+const queue = createQueue();
 
 const obj = {
   phoneNumber: '1234567890',

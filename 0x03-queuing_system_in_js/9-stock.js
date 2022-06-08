@@ -1,5 +1,5 @@
 import express from 'express';
-import redis from 'redis';
+import { createClient } from 'redis';
 import { promisify } from 'util';
 
 // Data
@@ -24,7 +24,7 @@ function getItemById(id) {
 }
 
 // client to connect on redis server
-const client = redis.createClient();
+const client = createClient();
 const getAsync = promisify(client.get).bind(client);
 
 client.on('error', (error) => {

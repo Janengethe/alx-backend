@@ -1,4 +1,4 @@
-const kue = require('kue');
+import { createQueue } from 'kue';
 
 const jobs = [
   {
@@ -47,7 +47,7 @@ const jobs = [
   },
 ];
 
-const queue = kue.createQueue();
+const queue = createQueue();
 
 jobs.forEach((job) => {
   const newJob = queue.create('push_notification_code_2', job).save((error) => {
