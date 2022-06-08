@@ -1,6 +1,6 @@
-const { expect } = require('chai');
-const kue = require('kue');
-const createPushNotificationsJobs = require('./8-job');
+import { expect } from 'chai';
+import kue from 'kue';
+import createPushNotificationsJobs from './8-job.js';
 
 const queue = kue.createQueue();
 
